@@ -391,8 +391,33 @@ Console.WriteLine(result);
 
 // Comparar a coerção e a conversão de um decimal em um int
 
+/*
 int value = (int)1.5m; // casting truncates
 Console.WriteLine(value);
 
 int value2 = Convert.ToInt32(1.5m); // converting rounds up
 Console.WriteLine(value2);
+*/
+
+// Utilizar o método TryParse() para analisar uma cadeia de caracteres como um int:
+
+// Examine a última linha de código no exemplo anterior, Console.WriteLine
+// ($"Measurement (w/ offset): {50 + result}");, uma vez que a variável result é 
+// definida fora da instrução if, ela pode ser acessada posteriormente em seu código.
+
+
+string value = "bad";
+int result = 0;
+if (int.TryParse(value, out result))
+{
+   Console.WriteLine($"Measurement: {result}");
+}
+else
+{
+   Console.WriteLine("Unable to report the measurement.");
+}
+if (result > 0)
+Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+
+
+
