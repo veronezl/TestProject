@@ -324,6 +324,9 @@ Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17
 Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
 */
 
+// Refêrencia de dado
+
+/*
 int[] ref_A = new int[1];
 ref_A[0] = 2;
 int[] ref_B = ref_A;
@@ -332,3 +335,64 @@ ref_B[0] = 5;
 Console.WriteLine("--Reference Types--");
 Console.WriteLine($"ref_A[0]: {ref_A[0]}");
 Console.WriteLine($"ref_B[0]: {ref_B[0]}");
+*/
+
+// Converter tipos de dados usando técnicas de fundição e conversão em C# ---------------------------------------
+
+// Explorar a coerção e a conversão de tipo de dados -------------------------------------------
+
+// Pergunta: Tentar alterar o tipo de dados do valor geraria uma exceção no tempo de execução?
+
+/*
+int first = 2;
+string second = "4";
+string result = first + second;
+Console.WriteLine(result);
+*/
+
+// Analisar se perderá dados:
+
+/*
+decimal myDecimal = 1.23456789m;
+float myFloat = (float)myDecimal;
+Console.WriteLine($"Decimal: {myDecimal}");
+Console.WriteLine($"Float  : {myFloat}");
+Output: 
+Decimal: 1,23456789
+Float  : 1,2345679
+*/
+
+// Use ToString() para converter um número em um string:
+
+/*
+int first = 5;
+int second = 7;
+string message = first.ToString() + second.ToString();
+Console.WriteLine(message);
+*/
+
+// Converter um string em um int usando o método auxiliar Parse():
+
+/*
+string first = "5";
+string second = "7";
+int sum = int.Parse(first) + int.Parse(second);
+Console.WriteLine(sum);
+*/
+
+// Converter um string em um int usando a classe Convert
+
+/*
+string value1 = "5";
+string value2 = "7";
+int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
+Console.WriteLine(result);
+*/
+
+// Comparar a coerção e a conversão de um decimal em um int
+
+int value = (int)1.5m; // casting truncates
+Console.WriteLine(value);
+
+int value2 = Convert.ToInt32(1.5m); // converting rounds up
+Console.WriteLine(value2);
