@@ -405,7 +405,7 @@ Console.WriteLine(value2);
 // ($"Measurement (w/ offset): {50 + result}");, uma vez que a variável result é 
 // definida fora da instrução if, ela pode ser acessada posteriormente em seu código.
 
-
+/*
 string value = "bad";
 int result = 0;
 if (int.TryParse(value, out result))
@@ -418,6 +418,48 @@ else
 }
 if (result > 0)
 Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+*/
 
+// Exercício – Concluir um desafio em que é preciso combinar valores de matriz de cadeia de 
+// caracteres como cadeias de caracteres e inteiros:
 
+/*
+string[] values = { "12,3", "45", "ABC", "11", "DEF" };
+
+decimal total = 0m;
+string message = "";
+
+foreach (string value in values)
+{
+    decimal number; // stores the TryParse "out" value
+
+    if (decimal.TryParse(value, out number))
+    {
+        total += number;
+    }
+    else
+    {
+        message += value;
+    }
+}
+
+Console.WriteLine($"Message: {message}");
+Console.WriteLine($"Total: {total}");
+*/
+
+// Exercício – Concluir o desafio de imprimir na tela operações matemáticas 
+// como tipos de número específicos
+
+int value1 = 11;
+decimal value2 = 6.2m;
+float value3 = 4.3f;
+
+double result1 = value1 / (double)value2;
+Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
+
+decimal result2 = value2 / (decimal)value3;
+Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
+
+float result3 = value3 / (float)value1;
+Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
 
