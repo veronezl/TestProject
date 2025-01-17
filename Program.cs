@@ -495,6 +495,7 @@ foreach (var pallet in pallets)
 
 // Usar métodos de matriz para limpar e redimensionar uma matriz
 
+/*
 string[] pallets = ["B14", "A11", "B12", "A13"];
 Console.WriteLine("");
 
@@ -525,3 +526,135 @@ foreach (var pallet in pallets)
 {
     Console.WriteLine($"-- {pallet}");
 }
+*/
+
+// Exercício – Descobrir Split() e Join()
+
+// Use o ToCharArray() para reverter um string:
+
+/*
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+string result = new string(valueArray);
+Console.WriteLine(result);
+*/
+
+// Combine todos os caracteres em uma nova cadeia de caracteres com valor separado 
+// por vírgula usando Join()
+
+/*
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
+Console.WriteLine(result);
+
+string[] items = result.Split(',');
+foreach (string item in items)
+{
+    Console.WriteLine(item);
+}
+*/
+
+// Escrever código para inverter cada palavra de uma mensagem
+
+/*
+string pangram = "The quick brown fox jumps over the lazy dog";
+
+string[] message = pangram.Split();
+
+string[] newMessage = new string[message.Length];
+
+for (int i = 0; i < message.Length; i++)
+{
+    char[] letters = message[i].ToCharArray();
+    Array.Reverse(letters);
+    newMessage[i] = new string(letters);
+}
+
+string result = String.Join(" ", newMessage);
+Console.WriteLine(result);  // The quick brown fox jumps over the lazy dog
+*/
+
+// Exercício – Concluir um desafio em que é preciso analisar uma cadeia de caracteres 
+// de pedidos, classificá-los e marcar possíveis erros:
+
+/*
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+
+string[] idPedidos = orderStream.Split(",");
+
+Array.Sort(idPedidos);
+
+foreach (var idPedido in idPedidos)
+{
+    if (idPedido.Length == 4)
+    {
+        Console.WriteLine(idPedido);
+    }
+
+    else
+    {
+        Console.WriteLine(idPedido + "\t- Error");
+    }
+
+}
+*/
+
+// Formatar dados alfanuméricos para apresentação em C# =========================================
+
+// Exercício – Investigar as noções básicas da formatação de cadeia de caracteres:
+
+// Formatação Composta
+
+/*
+string first = "Hello";
+string second = "World";
+string result = string.Format("{0} {1}!", first, second);
+Console.WriteLine(result);
+*/
+
+// Interpolação de cadeia de caracteres;
+
+/*
+string first = "Hello";
+string second = "World";
+Console.WriteLine($"{first} {second}!");
+Console.WriteLine($"{second} {first}!");
+Console.WriteLine($"{first} {first} {first}!");
+*/
+
+// Moeda de formatação:
+
+/*
+decimal price = 123.45m;
+int discount = 50;
+Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+*/
+
+// Formatar números
+
+/*
+decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N} units");
+Console.WriteLine($"Measurement: {measurement:N4} units");
+*/
+
+// Formatar percentuais
+
+/*
+decimal tax = .36785m;
+Console.WriteLine($"Tax rate: {tax:P2}");
+*/
+
+// Combinar abordagens de formatação
+
+decimal price = 67.55m;
+decimal salePrice = 59.99m;
+
+string yourDiscount = String.Format("You saved {0:C2} off the regular {1:C2} price. ", (price - salePrice), price);
+
+yourDiscount += $"A discount of {((price - salePrice)/price):P2}!"; //inserted
+Console.WriteLine(yourDiscount);
