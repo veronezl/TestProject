@@ -651,6 +651,7 @@ Console.WriteLine($"Tax rate: {tax:P2}");
 
 // Combinar abordagens de formatação
 
+/*
 decimal price = 67.55m;
 decimal salePrice = 59.99m;
 
@@ -658,3 +659,27 @@ string yourDiscount = String.Format("You saved {0:C2} off the regular {1:C2} pri
 
 yourDiscount += $"A discount of {((price - salePrice)/price):P2}!"; //inserted
 Console.WriteLine(yourDiscount);
+*/
+
+//  Descobrir o preenchimento e alinhamento:
+
+/*
+string input = "Pad this";
+ Console.WriteLine(input.PadLeft(12, '-'));
+ Console.WriteLine(input.PadRight(12, '-'));
+*/
+
+//  Como trabalhar com cadeias de caracteres preenchidas
+
+// Adicionar a ID de pagamento, nome, valor à saída
+
+string paymentId = "769C";
+ string payeeName = "Mr. Stephen Ortega";
+ string paymentAmount = "$5,000.00";
+
+ var formattedLine = paymentId.PadRight(6);
+ formattedLine += payeeName.PadRight(24);
+ formattedLine += paymentAmount.PadLeft(10);
+
+ Console.WriteLine("1234567890123456789012345678901234567890");
+ Console.WriteLine(formattedLine);
