@@ -673,6 +673,7 @@ string input = "Pad this";
 
 // Adicionar a ID de pagamento, nome, valor à saída
 
+/*
 string paymentId = "769C";
  string payeeName = "Mr. Stephen Ortega";
  string paymentAmount = "$5,000.00";
@@ -683,3 +684,56 @@ string paymentId = "769C";
 
  Console.WriteLine("1234567890123456789012345678901234567890");
  Console.WriteLine(formattedLine);
+*/
+
+//  Exercício – Concluir um desafio em que é preciso aplicar a interpolação de cadeias de 
+// caracteres a uma carta-modelo:
+
+string customerName = "Ms. Barros";
+
+string currentProduct = "Magic Yield";
+int currentShares = 2975000;
+decimal currentReturn = 0.1275m;
+decimal currentProfit = 55000000.0m;
+
+string newProduct = "Glorious Future";
+decimal newReturn = 0.13125m;
+decimal newProfit = 63000000.0m;
+
+// Your logic here
+System.Console.WriteLine($"Dear {customerName},\n");
+System.Console.WriteLine($"As a custumer of our {currentProduct} offering we excited to tell you about a new financial product that would dramtically increase your return.\n");
+System.Console.WriteLine($"Currently, you own {currentShares:N} shares at a return of {currentReturn:P2}.\n");
+System.Console.WriteLine($"Our new product, {newProduct}, offers a return of {newReturn:P2}.  Given your current volume, your potential profit would be {newProfit:C}.\n");
+
+Console.WriteLine("Here's a quick comparison:\n");
+
+string comparisonMessage = "";
+
+// Your logic here
+
+comparisonMessage = currentProduct.PadRight(20);
+comparisonMessage += $"{currentReturn:P2}".PadRight(10);
+comparisonMessage += $"{currentProfit:C}\n".PadRight(20);
+comparisonMessage += newProduct.PadRight(20);
+comparisonMessage += $"{newReturn:P2}".PadRight(10);
+comparisonMessage += $"{newProfit:C}\n".PadRight(20);
+
+Console.WriteLine(comparisonMessage);
+
+/* Output
+Dear Ms. Barros,
+
+As a custumer of our Magic Yield offering we excited to tell you about a new financial product that 
+would dramtically increase your return.
+
+Currently, you own 2.975.000,000 shares at a return of 12,75%.
+
+Our new product, Glorious Future, offers a return of 13,13%.  Given your current volume, 
+your potential profit would be R$ 63.000.000,00.
+
+Here's a quick comparison:
+
+Magic Yield         12,75%    R$ 55.000.000,00
+Glorious Future     13,13%    R$ 63.000.000,00
+*/
