@@ -689,6 +689,7 @@ string paymentId = "769C";
 //  Exercício – Concluir um desafio em que é preciso aplicar a interpolação de cadeias de 
 // caracteres a uma carta-modelo:
 
+/*
 string customerName = "Ms. Barros";
 
 string currentProduct = "Magic Yield";
@@ -720,6 +721,7 @@ comparisonMessage += $"{newReturn:P2}".PadRight(10);
 comparisonMessage += $"{newProfit:C}\n".PadRight(20);
 
 Console.WriteLine(comparisonMessage);
+*/
 
 /* Output
 Dear Ms. Barros,
@@ -737,3 +739,226 @@ Here's a quick comparison:
 Magic Yield         12,75%    R$ 55.000.000,00
 Glorious Future     13,13%    R$ 63.000.000,00
 */
+
+// Modificar o conteúdo de cadeias de caracteres usando métodos internos de tipo de dados em C# =============================
+
+// Exercício – Use os métodos auxiliares IndexOf() e Substring() da cadeia de caracteres:
+
+// Escreva um código para encontrar pares de parênteses inseridas em uma cadeia de caracteres:
+
+/*
+string message = "Find what is (inside the parentheses)";
+
+int openingPosition = message.IndexOf('(');
+int closingPosition = message.IndexOf(')');
+
+Console.WriteLine(openingPosition);
+Console.WriteLine(closingPosition);
+*/
+
+// Output: 14, 36
+
+// Adicione o código para recuperar o valor entre parênteses:
+
+/*
+string message = "Find what is (inside the parentheses)";
+
+int openingPosition = message.IndexOf('(');
+int closingPosition = message.IndexOf(')');
+
+// Console.WriteLine(openingPosition);
+// Console.WriteLine(closingPosition);
+
+int length = closingPosition - openingPosition;
+Console.WriteLine(message.Substring(openingPosition, length));
+*/
+
+// Output: (inside the parentheses
+
+// Modificar a posição inicial da subcadeia de caracteres:
+
+/*
+string message = "Find what is (inside the parentheses)";
+
+int openingPosition = message.IndexOf('(');
+int closingPosition = message.IndexOf(')');
+
+openingPosition += 1;
+
+System.Console.WriteLine(openingPosition); // Output: 14
+
+int length = closingPosition - openingPosition;
+Console.WriteLine(message.Substring(openingPosition, length));
+*/
+
+// Output: inside the parentheses
+
+// Mais exemple de posição inicial da subcadeia de caracteres:
+
+/*
+string message = "What is the value <span>between the tags</span>?";
+
+int openingPosition = message.IndexOf("<span>");
+int closingPosition = message.IndexOf("</span>");
+
+openingPosition += 6;
+int length = closingPosition - openingPosition;
+Console.WriteLine(message.Substring(openingPosition, length));
+*/
+
+// Output: between the tags
+
+// Evitar valores mágicos:
+
+/*
+string message = "What is the value <span>between the tags</span>?";
+
+const string openSpan = "<span>";
+const string closeSpan = "</span>";
+
+int openingPosition = message.IndexOf(openSpan);
+int closingPosition = message.IndexOf(closeSpan);
+
+openingPosition += openSpan.Length;
+int length = closingPosition - openingPosition;
+Console.WriteLine(message.Substring(openingPosition, length));
+*/
+
+// Output: between the tags
+
+// Exercício – Usar os métodos auxiliares IndexOf() e LastIndexOf() da cadeia de caracteres:
+
+/*
+string message = "hello there!";
+
+int first_h = message.IndexOf('h');
+int last_h = message.LastIndexOf('h');
+
+Console.WriteLine($"For the message: '{message}', the first 'h' is at position {first_h} and the last 'h' is at position {last_h}.");
+*/
+
+// Output: For the message: 'hello there!', the first 'h' is at position 0 and the last 'h' is at position 7.
+
+// Recuperar a última ocorrência de uma subcadeia de caracteres:
+
+/*
+string message = "(What if) I am (only interested) in the last (set of parentheses)?";
+int openingPosition = message.LastIndexOf('(');
+
+openingPosition += 1;
+int closingPosition = message.LastIndexOf(')');
+int length = closingPosition - openingPosition;
+Console.WriteLine(message.Substring(openingPosition, length));
+*/
+
+// Output: only interested in the last
+
+// Recuperar todas as instâncias de subcadeias de caracteres dentro de parênteses:
+
+/*
+string message = "(What if) there are (more than) one (set of parentheses)?";
+while (true)
+{
+    int openingPosition = message.IndexOf('(');
+    if (openingPosition == -1) break;
+
+    openingPosition += 1;
+    int closingPosition = message.IndexOf(')');
+    int length = closingPosition - openingPosition;
+    Console.WriteLine(message.Substring(openingPosition, length));
+
+    // Note the overload of the Substring to return only the remaining 
+    // unprocessed message:
+    message = message.Substring(closingPosition + 1);
+}
+*/
+
+// Output: What if, more than, set of parentheses: 
+
+// Trabalhe com diferentes tipos de conjuntos de símbolos usando IndexOfAny(): 
+
+/*
+string message = "Hello, world!";
+char[] charsToFind = { 'a', 'e', 'i' };
+
+int index = message.IndexOfAny(charsToFind);
+
+Console.WriteLine($"Found '{message[index]}' in '{message}' at index: {index}.");
+*/
+
+// Output: Found 'e' in 'Hello, world!' at index: 1.
+
+// Outro exemplo de IndexOfAny():
+
+/*
+string message = "Help (find) the {opening symbols}";
+Console.WriteLine($"Searching THIS Message: {message}");
+char[] openSymbols = { '[', '{', '(' };
+int startPosition = 5;
+int openingPosition = message.IndexOfAny(openSymbols);
+Console.WriteLine($"Found WITHOUT using startPosition: {message.Substring(openingPosition)}");
+
+openingPosition = message.IndexOfAny(openSymbols, startPosition);
+Console.WriteLine($"Found WITH using startPosition {startPosition}:  {message.Substring(openingPosition)}");
+*/
+
+/* Output
+Searching THIS Message: Help (find) the {opening symbols}
+Found WITHOUT using startPosition: (find) the {opening symbols}
+Found WITH using startPosition 5:  (find) the {opening symbols}
+*/
+
+// Outro exemplo de IndexOfAny():
+
+string message = "(What if) I have [different symbols] but every {open symbol} needs a [matching closing symbol]?";
+
+// The IndexOfAny() helper method requires a char array of characters. 
+// You want to look for:
+
+char[] openSymbols = { '[', '{', '(' };
+
+// You'll use a slightly different technique for iterating through 
+// the characters in the string. This time, use the closing 
+// position of the previous iteration as the starting index for the 
+//next open symbol. So, you need to initialize the closingPosition 
+// variable to zero:
+
+int closingPosition = 0;
+
+while (true)
+{
+    int openingPosition = message.IndexOfAny(openSymbols, closingPosition);
+
+    if (openingPosition == -1) break;
+
+    string currentSymbol = message.Substring(openingPosition, 1);
+
+    // Now  find the matching closing symbol
+    char matchingSymbol = ' ';
+
+    switch (currentSymbol)
+    {
+        case "[":
+            matchingSymbol = ']';
+            break;
+        case "{":
+            matchingSymbol = '}';
+            break;
+        case "(":
+            matchingSymbol = ')';
+            break;
+    }
+
+    // To find the closingPosition, use an overload of the IndexOf method to specify 
+    // that the search for the matchingSymbol should start at the openingPosition in the string. 
+
+    openingPosition += 1;
+    closingPosition = message.IndexOf(matchingSymbol, openingPosition);
+
+    // Finally, use the techniques you've already learned to display the sub-string:
+
+    int length = closingPosition - openingPosition;
+    Console.WriteLine(message.Substring(openingPosition, length));
+}
+
+// Output: different symbols, open symbol, matching closing symbol
