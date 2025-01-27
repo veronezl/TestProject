@@ -1030,3 +1030,140 @@ Console.WriteLine(quantity);
 Console.WriteLine(output);
 */
 
+// Crie métodos em aplicativos de console C# =============================================
+
+// Normalmente definimos todos os métodos no final do programa. Por exemplo:
+
+/*
+int[] a = {1,2,3,4,5};
+
+Console.WriteLine("Contents of Array:");
+PrintArray();
+
+void PrintArray()
+{
+    foreach (int x in a)
+    {
+        Console.Write($"{x} ");
+    }
+    Console.WriteLine();
+}
+*/
+
+// Execução do método: 
+
+/*
+Console.WriteLine("Before calling a method");
+SayHello();
+Console.WriteLine("After calling a method");
+
+void SayHello() 
+{
+    Console.WriteLine("Hello World!");
+}
+*/
+
+// Práticas recomendadas de nomear métodos, exemplo: 
+
+/*
+void ShowData(string a, int b, int c);
+void DisplayDate(string month, int day, int year);
+*/
+
+// Criar primeiro método: 
+
+/*
+Console.WriteLine("Generation random numbers:");
+DisplayRandowNumbers();
+
+void DisplayRandowNumbers()
+{
+    Random random = new Random();
+
+    for (int i = 0; i < 5; i++)
+    {
+        Console.Write($"{random.Next(1, 100)} ");
+    }
+
+    Console.WriteLine();
+}
+*/
+
+// Criar métodos reutilizáveis: 
+
+/*
+using System;
+
+int[] times = {800, 1200, 1600, 2000};
+int diff = 0;
+
+Console.WriteLine("Enter current GMT");
+int currentGMT = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Current Medicine Schedule:");
+DisplayTimes();
+
+Console.WriteLine("Enter new GMT");
+int newGMT = Convert.ToInt32(Console.ReadLine());
+
+if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+{
+    Console.WriteLine("Invalid GMT");
+}
+else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0) 
+{
+    diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+
+    AdjustTimes();
+} 
+else 
+{
+    diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+
+    AdjustTimes();
+}
+
+Console.WriteLine("New Medicine Schedule:");
+DisplayTimes();
+
+Console.WriteLine();
+
+void DisplayTimes() 
+{
+    // Format and display medicine times
+    foreach (int val in times)
+    {
+        string time = val.ToString();
+        int len = time.Length;
+
+        if (len >= 3)
+        {
+            time = time.Insert(len - 2, ":");
+        }
+        else if (len == 2)
+        {
+            time = time.Insert(0, "0:");
+        }
+        else
+        {
+            time = time.Insert(0, "0:0");
+        }
+
+        Console.Write($"{time} ");
+    }
+
+    Console.WriteLine();
+}
+
+void AdjustTimes() 
+{
+    // Adjust the times by adding the difference, keeping the value within 24 hours
+    for (int i = 0; i < times.Length; i++) 
+    {
+        times[i] = ((times[i] + diff)) % 2400;
+    }
+}
+*/
+
+// Usar métodos para estruturar código: 
+
