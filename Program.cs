@@ -1242,6 +1242,7 @@ void ValidateRange()
 
 // Exercício – Concluir o desafio de criar um método reutilizável:
 
+/*
 Random random = new Random();
 int luck = random.Next(100);
 
@@ -1259,5 +1260,143 @@ void TellFortune()
     for (int i = 0; i < 4; i++)
     {
         Console.Write($"{text[i]} {fortune[i]} ");
+    }
+}
+*/
+
+// Usar parâmetros em métodos:
+
+// Neste exemplo, o método CountTo aceita um parâmetro inteiro chamado
+// max. O parâmetro é referenciado no loop for do método. 
+// Quando CountTo é chamado, o inteiro 5 é fornecido como um argumento.
+
+/*
+CountTo(5);
+
+	void CountTo(int max) 
+	{
+		for (int i = 0; i < max; i++)
+		{
+			Console.Write($"{i}, ");
+		}
+	}
+*/
+
+// Criar um método com parâmetros:
+
+// Observe que os parâmetros são declarados da mesma forma que você declara
+// variáveis, usando o tipo de dados seguido pelo nome da variável. 
+// Você pode usar parâmetros de qualquer tipo de dados, 
+// como string, bool, int, matrizes e muito mais! Vários parâmetros 
+// em um método são sempre separados por vírgulas.
+
+/*
+int[] schedule = { 800, 1200, 1600, 2000 };
+
+DisplayAdjustedTimes(schedule, 6, -6);
+
+void DisplayAdjustedTimes(int[] times, int currentGMT, int newGMT)
+{
+    int diff = 0;
+    if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+    {
+        Console.WriteLine("Invalid GMT");
+    }
+    else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
+    {
+        diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+    }
+    else
+    {
+        diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+    }
+
+    for (int i = 0; i < times.Length; i++)
+    {
+        int newTime = ((times[i] + diff)) % 2400;
+        Console.WriteLine($"{times[i]} -> {newTime}");
+    }
+}
+*/
+
+//  Entender o escopo do método:
+
+// Testar o escopo de variáveis
+
+/*
+string[] students = {"Jenna", "Ayesha", "Carlos", "Viktor"};
+
+DisplayStudents(students);
+DisplayStudents(new string[] {"Robert","Vanya"});
+
+void DisplayStudents(string[] students) 
+{
+    foreach (string student in students) 
+    {
+        Console.Write($"{student}, ");
+    }
+    Console.WriteLine();
+}
+*/
+
+//  Mais exemplo: 
+
+/*
+double pi = 3.14159;
+PrintCircleInfo(12);
+PrintCircleInfo(24);
+
+void PrintCircleInfo(int radius) 
+{
+    Console.WriteLine($"Circle with radius {radius}");
+    PrintCircleArea(radius);
+    PrintCircleCircumference(radius);
+}
+
+void PrintCircleArea(int radius)
+{
+    double area = pi * (radius * radius);
+    Console.WriteLine($"Area = {area}");
+}
+
+void PrintCircleCircumference(int radius)
+{
+    double circumference = 2 * pi * radius;
+    Console.WriteLine($"Circumference = {circumference}");
+}
+*/
+
+//  Métodos com parâmetros opcionais
+
+/*
+Criar um aplicativo RSVP
+Nesta tarefa, você criará um breve aplicativo para 
+convidados para RSVP a um evento. Os convidados 
+informarão o tamanho da festa e possíveis alergias. 
+Você também adicionará a opção para restringir RSVPs 
+a uma lista restrita de convidados.
+*/
+
+string[] guestList = {"Rebecca", "Nadia", "Noor", "Jonte"};
+string[] rsvps = new string[10];
+int count = 0;
+
+void RSVP(string name, int partySize, string allergies, bool inviteOnly) 
+{
+    if (inviteOnly)
+    {
+        // search guestList before adding rsvp
+    }
+
+    rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+    count++;
+}
+
+void ShowRSVPs()
+{
+    Console.WriteLine("\nTotal RSVPs:");
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine(rsvps[i]);
     }
 }
