@@ -1509,6 +1509,7 @@ string FormatDecimal(double input)
 
 // Converter dolar para vnd->
 
+/*
 double usd = 23.73;
 int vnd = UsdToVnd(usd);
 
@@ -1526,4 +1527,120 @@ double VndToUsd(int vnd)
 {
     double rate = 23500;
     return vnd / rate;
+}
+*/
+
+// Retornar cadeias de caracteres de métodos:
+
+// Criar um método que retorna uma cadeia de caracteres -----------------------------------------------------------------
+
+/*
+string input = "snake";
+
+System.Console.WriteLine(input);
+System.Console.WriteLine(ReverseWord(input));
+
+string ReverseWord(string word)
+{
+    string result = "";
+    for (int i = word.Length - 1; i >= 0; i--)
+    {
+        result += word[i];
+    }
+
+    return result;
+}
+*/
+
+// Criar um método para inverter as palavras de uma frase:
+
+/*
+string input = "there are snakes at the zoo";
+
+System.Console.WriteLine(input);
+System.Console.WriteLine(ReverseSentence(input));
+
+string ReverseSentence (string input)
+{
+    string result = "";
+    string[] words = input.Split(' ');
+
+    foreach (string word in words)
+    {
+        result += ReverseWord(word) + " ";
+    }
+
+    return result.Trim();
+}
+
+string ReverseWord(string word) 
+{
+    string result = "";
+    for (int i = word.Length - 1; i >= 0; i--) 
+    {
+        result += word[i];
+    }
+    return result;
+}
+*/
+
+// Retornar boolianos de métodos -------------------------------------------------------------------------------------
+
+string[] words = {"racecar" ,"talented", "deified", "tent", "tenet"};
+
+Console.WriteLine("Is it a palindrome?");
+foreach (string word in words) 
+{
+    Console.WriteLine($"{word}: {IsPalindrome(word)}");
+}
+
+bool IsPalindrome(string word)
+{
+    int start = 0;
+    int end = word.Length - 1;
+
+    while (start < end)
+    {
+        if (word[start] != word[end])
+        {
+            return false;
+        }
+        start++;
+        end--;
+    }
+    
+    return true;
+}
+
+// Retornar matrizes de métodos -------------------------------------------------------------------------------------
+
+// Localizar moedas para fazer alterações: 
+
+int target = 60;
+int[] coins = new int[] {5, 5, 50, 25, 25, 10, 5};
+int[] result = TwoCoins(coins, target);
+
+if (result.Length == 0) 
+{
+    Console.WriteLine("No two coins make change");
+} 
+else 
+{
+    Console.WriteLine($"Change found at positions {result[0]} and {result[1]}");
+}
+
+int[] TwoCoins(int[] coins, int target)
+{
+   for (int curr = 0; curr < coins.Length; curr++)
+   {
+         for (int next = curr + 1; next < coins.Length; next++)
+         {
+            if (coins[curr] + coins[next] == target)
+            {
+               return new int[] { curr, next };
+            }
+         }
+   }
+   
+   return new int[0];
 }
