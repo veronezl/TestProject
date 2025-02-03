@@ -1751,3 +1751,22 @@ string WinOrLose(int roll, int target)
     return "You lose!";
 }
 */
+
+// Projeto guiado – Planejar uma visita ao zoológico =======================================================
+
+using System;
+
+string[] pettingZoo = 
+{
+    "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
+    "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
+    "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
+};
+
+// RandomizeAnimals();
+
+// string[,] group = AssignGroup();
+
+System.Console.WriteLine("School A");
+
+// PrintGroup(group);
