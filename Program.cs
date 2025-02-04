@@ -1696,7 +1696,7 @@ int[,] TwoCoins(int[] coins, int target)
     }
     return (count == 0) ? new int[0,0] : result;
 }
-*/ 
+*/
 
 // Exercício – Concluir o desafio de adicionar métodos para tornar o jogo viável: --------------------------------------
 
@@ -1755,11 +1755,12 @@ string WinOrLose(int roll, int target)
 // Projeto guiado – Planejar uma visita ao zoológico =======================================================
 
 using System;
+using System.Security.Cryptography;
 
-string[] pettingZoo = 
+string[] pettingZoo =
 {
-    "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
-    "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
+    "alpacas", "capybaras", "chickens", "ducks", "emus", "geese",
+    "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws",
     "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
 };
 
@@ -1770,3 +1771,19 @@ string[] pettingZoo =
 System.Console.WriteLine("School A");
 
 // PrintGroup(group);
+
+void RandomizeAnimals()
+{
+    Random random = new Random();
+
+    for (int i = 0; i < pettingZoo.Length; i++)
+    {
+        int r = random.Next(i, pettingZoo.Length);
+
+        string temp = pettingZoo[i];
+        pettingZoo[i] = pettingZoo[r];
+        pettingZoo[r] = temp;
+    }
+
+
+}
